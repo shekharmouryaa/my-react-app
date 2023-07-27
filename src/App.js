@@ -6,7 +6,28 @@ import './App.css'
 
 function App() {
 
-  const titles = ["Product", "Price", "Explore","Gallery", "Service", "Contact"]
+  const featuresItem = [{
+    title: "Product",
+    description: "Explore our products",
+  }, {
+    title: "Price",
+    description: "Explore our price",
+  }, {
+    title: "Contact",
+    description: "Contact us",
+  },{
+    title: "About",
+    description: "About us",
+  },
+  {
+    title: "Careers",
+    description: "Join our Team",
+  },
+  {
+    title: "Privacy Policy",
+    description: "Know our Privacy Policy",
+  }
+]
   
 
   return (
@@ -14,10 +35,9 @@ function App() {
       <Header />
       <Banner />
       <div className='row row-cols-1 row-cols-md-3 mx-5'>
-        {titles.map((item, index) => (
-          <Card key={index} title={item}/>
-        ))}
-      
+        {featuresItem.map((detail, index) => {
+          return (<Card key={index} detail={detail}/>)
+        })}
       </div>
       <Footer />
     </div>
