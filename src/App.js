@@ -15,7 +15,7 @@ function App() {
   }, {
     title: "Contact",
     description: "Contact us",
-  },{
+  }, {
     title: "About",
     description: "About us",
   },
@@ -27,8 +27,8 @@ function App() {
     title: "Privacy Policy",
     description: "Know our Privacy Policy",
   }
-]
-  
+  ]
+
 
   return (
     <div className="App">
@@ -36,7 +36,7 @@ function App() {
       <Banner />
       <div className='row row-cols-1 row-cols-md-3 mx-5'>
         {featuresItem.map((detail, index) => {
-          return (<Card key={index} detail={detail}/>)
+          return (<Card key={index} detail={detail} />)
         })}
       </div>
       <Footer />
