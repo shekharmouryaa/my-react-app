@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserDataTable = ({ records, deleteRecords,EditRecords }) => {
+export const UserDataTable = ({ records, deleteRecords }) => {
     return (
         <div>
             <div className='table-wrapper'>
@@ -21,10 +21,7 @@ export const UserDataTable = ({ records, deleteRecords,EditRecords }) => {
                                 <td>{item.name}</td>
                                 <td>{item.email}</td>
                                 <td>{item.password}</td>
-                                <td>
-                                <span className='btn btn-danger pointer-cursor ' onClick={() => deleteRecords(item.id)}>{"Delete"}</span>
-                                <span className='btn btn-info pointer-cursor mx-2 ' onClick={() => EditRecords(item.id)}>{"Edit"}</span>
-                                </td>
+                                <td><span className='btn btn-danger pointer-cursor ' onClick={() => deleteRecords(item.name)}>{"Delete"}</span></td>
                             </tr>
                         ))
                         }
