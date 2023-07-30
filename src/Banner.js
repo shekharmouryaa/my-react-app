@@ -23,7 +23,7 @@ const Banner = () => {
     } else {
       setRecords([])
     }
-  }, [localData])
+  }, [])
 
 
   const deleteRecords = (username) => {
