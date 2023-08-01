@@ -3,7 +3,7 @@ import React from 'react'
 export const RegisterstaionForm = ({ edit, updateForm,submitForm, form, handleChange }) => {
     return (
 
-        <div class="col-md-10 mx-auto col-lg-5">
+        <div class="col-md-12 ">
             <form onSubmit={(e) => edit ? updateForm(e) : submitForm(e)} class="p-4 p-md-5 border rounded-3 bg-body-tertiary" autoComplete='off'>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput" placeholder="Name"

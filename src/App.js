@@ -34,11 +34,7 @@ function App() {
     <div className="App">
       <Header />
       <Banner />
-      <div className='row row-cols-1 row-cols-md-3 mx-5'>
-        {featuresItem.map((detail, index) => {
-          return (<Card key={index} detail={detail} />)
-        })}
-      </div>
+
       <Footer />
     </div>
   );
