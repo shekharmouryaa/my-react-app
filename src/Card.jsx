@@ -10,10 +10,6 @@ export const Card = ({detail}) => {
         </div>
         <h3 class="fs-2 text-body-emphasis">{detail.title}</h3>
         <p>{detail.description}</p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi"></svg>
-        </a>
       </div>
       </div>
     </div>
