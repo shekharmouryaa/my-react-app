@@ -3,6 +3,7 @@ import { Header } from './Header';
 import { Footer } from './Footer'
 import { Card } from './Card';
 import './App.css'
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
@@ -29,12 +30,11 @@ function App() {
   }
   ]
 
-
   return (
     <div className="App">
+      <ToastContainer />
       <Header />
       <Banner />
-
       <Footer />
     </div>
   );
