@@ -40,3 +40,7 @@
 .hr-tag {
   border-top: 2px solid #000;
 }
+
+.wrapper{
+  height: calc(100vh - 210px);
+}
