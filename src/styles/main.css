@@ -1,0 +1,6 @@
+.todo_wrapper{
+    margin: auto;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+}
