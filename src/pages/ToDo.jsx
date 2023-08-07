@@ -20,10 +20,18 @@ const ToDo = () => {
   }
 
   return (
-    <div>
-      <ToDoInput newItem={newItem} setNewItem={setNewItem} addToDo={addToDo}/>
-      <ToDoList/>
-    </div>
+    <section className="todo_wrapper mt-2">
+      <div className="container py-1 ">
+        <div className="row d-flex justify-content-center h-100">
+          <div className="col">
+          <div className="card" id="list1" >
+            <ToDoInput newItem={newItem} setNewItem={setNewItem} addToDo={addToDo} />
+            <ToDoList toDoItems={toDoItems} />
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 export default ToDo;
