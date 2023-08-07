@@ -5,19 +5,16 @@ import './styles/main.css';
 import './styles/custom.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ToDo from './pages/ToDo';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { MainRoute } from './routes/MainRoute';
 
-const defaultTheme = createTheme();
+// const defaultTheme = createTheme();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={defaultTheme}>
-        <CssBaseline />
-      <ToDo/>
-    </ThemeProvider>
+      <MainRoute/>
   </React.StrictMode>
 );
 
