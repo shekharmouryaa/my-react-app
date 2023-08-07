@@ -1,32 +1,27 @@
 import React from 'react'
 import deleteIcon from '../assets/delete-button.svg'
 import editIcon from '../assets/edit-button.svg'
-function ToDoList({ toDoItems }) {
+function ToDoList({ toDoItems, editTodo, deleteTodo, changeStatus }) {
+  
   return (
     <div className='px-5 mb-4'>
       <p className="h4 text-center mt-1 text-success">
         <h3 className='text-center'>To Do List</h3>
       </p>
-      {toDoItems.length ? toDoItems?.map((item,index) => (
+      {toDoItems.length ? toDoItems?.map((item, index) => (
         <div className="card my-3" key={index}>
           <div className="card-body ">
             <div className='d-flex justify-content-between'>
-              <div>
-                <div class="checkbox-wrapper-15">
-                  <input class="inp-cbx" id="cbx-15" type="checkbox" style={{ display: "none" }} />
-                  <label class="cbx" for="cbx-15">
-                    <span>
-                      <svg width="12px" height="9px" viewbox="0 0 12 9">
-                        <polyline points="1 5 4 8 11 1"></polyline>
-                      </svg>
-                    </span>
-                    <span>{item.task}</span>
-                  </label>
+                <div class="checkbox-wrapper-19">
+                  <input type="checkbox" id={`cbtest-${index}`} onChange={(e) => changeStatus(e, item.id)} />
+                  <label for={`cbtest-${index}`} class="check-box"/>
+                <span className={`mx-2 ${item.isCompleted ? 'task-done' : ''}`}>
+                  {item.task}
+                  </span>
                 </div>
-              </div>
               <div>
-                <img className='mx-2' width={25} src={editIcon} alt='icon' />
-                <img className='mx-2' width={25} src={deleteIcon} alt='icon' />
+                <img role="button" className='mx-2' width={25} src={editIcon} alt='icon' onClick={() => editTodo(item.id)} />
+                <img role="button" className='mx-2' width={25} src={deleteIcon} alt='icon' onClick={() => deleteTodo(item.id)} />
               </div>
             </div>
           </div>

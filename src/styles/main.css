@@ -4,3 +4,8 @@
     display: flex;
     justify-content: center;
 }
+
+.task-done{
+    text-decoration: line-through;
+    color: rgb(104, 104, 104)
+}
