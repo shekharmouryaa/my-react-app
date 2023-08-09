@@ -24,8 +24,6 @@ export const RegisterstaionForm = ({ edit, updateForm,submitForm, form, handleCh
                { edit ? <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Update</button> :
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
                 }
-                <hr class="my-4" />
-                <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
             </form>
         </div>
     )

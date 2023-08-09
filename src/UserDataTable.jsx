@@ -1,6 +1,11 @@
 import React from 'react'
 
-export const UserDataTable = ({ records, deleteRecords,EditRecords }) => {
+export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
+
+    const sordtedRecords = records.sort((a,b) => {
+        return  a.name.localeCompare(b.name)
+    })
+
     return (
         <div>
             <div className='table-wrapper'>
@@ -15,14 +20,14 @@ export const UserDataTable = ({ records, deleteRecords,EditRecords }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {records.map((item, index) => (
+                        {sordtedRecords?.map((item, index) => (
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                                <td>{item.password}</td>
+                                <td>{item?.name}</td>
+                                <td>{item?.email}</td>
+                                <td>{item?.password}</td>
                                 <td>
-                                <span className='btn btn-danger pointer-cursor ' onClick={() => deleteRecords(item.id)}>{"Delete"}</span>
+                                <span className='btn btn-danger pointer-cursor ' onClick={() => ConfirmDelete(item.id)}>{"Delete"}</span>
                                 <span className='btn btn-info pointer-cursor mx-2 ' onClick={() => EditRecords(item.id)}>{"Edit"}</span>
                                 </td>
                             </tr>
