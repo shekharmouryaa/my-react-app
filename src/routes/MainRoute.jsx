@@ -4,8 +4,8 @@ import { Series } from '../pages/Series';
 import { Movies } from '../pages/Movies';
 import { Welcome } from '../pages/Welcome';
 import { ErrorPage } from '../pages/ErrorPage';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+import  Header  from '../components/Header';
+import  Footer  from '../components/Footer';
 
 export const MainRoute = () => {
   
