@@ -2,22 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './styles/main.css';
-import './styles/custom.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ToDo from './pages/ToDo';
 
-const defaultTheme = createTheme();
+import Home from './pages/Home';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={defaultTheme}>
-        <CssBaseline />
-      <ToDo/>
-    </ThemeProvider>
+      <Home/>
   </React.StrictMode>
 );
 

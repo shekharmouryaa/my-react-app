@@ -1,11 +1,4 @@
-.todo_wrapper{
-    margin: auto;
-    max-width: 900px;
-    display: flex;
-    justify-content: center;
-}
-
-.task-done{
-    text-decoration: line-through;
-    color: rgb(104, 104, 104)
+.edit-btn{
+    background-color: rgb(255, 183, 0) !important;
+    margin-right: 15px !important;
 }
