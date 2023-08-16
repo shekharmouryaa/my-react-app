@@ -19,8 +19,7 @@ export const Movies = () => {
       const searchData = filterData?.filter( item => item?.title?.toLowerCase().includes(keyword?.toLowerCase()))
       setFilterData(searchData)
     }else{
-      let data = media.filter(media => media?.programType === 'movie')
-      setFilterData(data)
+      setFilterData(media)
     }
   },[keyword])
 
