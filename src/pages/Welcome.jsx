@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
 import { getApiData } from '../API/apis'
@@ -62,26 +63,26 @@ export const Welcome = () => {
       })
       setFilterData(data)
     }
-  },[keyword,media,filterData,mediaType])
+  },[keyword,mediaType,media])
 
   const filterProgramType = (mediatype) =>{
     setMediaType(mediatype)
     setKeyword("")
   } 
-  // Below code used for add class dynamic
+  // Below code used for add className dynamic
   // {`anchor ${mediaType === "all" ? 'selected': ""}`}
 
    return (
     <div className='container'>
      <div className='row my-4 align-items-center'>
       <div className='col-md-7'>
-      <div class="column_header"><div class="HeadingContainer">
-        <span class="section-title">What's Popular</span>
+      <div className="column_header"><div className="HeadingContainer">
+        <span className="section-title">What's Popular</span>
       </div>
-        <div class="selector_wrapper">
-          <div class={`anchor ${mediaType === "all" ? 'selected': ""}`} onClick={()=> filterProgramType("all")}>All Media</div>
-          <div class={`anchor ${mediaType === "series" ? 'selected': ""}`} onClick={()=> filterProgramType("series")}>Series</div>
-          <div class={`anchor ${mediaType === "movie" ? 'selected': ""}`} onClick={()=> filterProgramType("movie")}>Movies</div>
+        <div className="selector_wrapper">
+          <div className={`anchor ${mediaType === "all" ? 'selected': ""}`} onClick={()=> filterProgramType("all")}>All Media</div>
+          <div className={`anchor ${mediaType === "series" ? 'selected': ""}`} onClick={()=> filterProgramType("series")}>Series</div>
+          <div className={`anchor ${mediaType === "movie" ? 'selected': ""}`} onClick={()=> filterProgramType("movie")}>Movies</div>
         </div>
       </div>
       </div>
@@ -91,8 +92,8 @@ export const Welcome = () => {
       </div>
      </div>
       <div className='row'>
-        {filterData.map(items => {
-          return (<MediaCard items={items} />)
+        {filterData.map((items,index )=> {
+          return (<MediaCard key={index} items={items} />)
         })}
       </div>
 
