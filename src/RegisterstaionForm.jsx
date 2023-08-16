@@ -12,14 +12,14 @@ export const RegisterstaionForm = ({ edit, updateForm,submitForm, form, handleCh
                     <label for="floatingInput">Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-                        name={"email"} value={form.email} onChange={(e) => handleChange(e)}/>
-                    <label for="floatingInput">Email address</label>
+                    <input type="number" class="form-control" id="floatingInput" placeholder="enter age"
+                        name={"age"} value={form.age} onChange={(e) => handleChange(e)}/>
+                    <label for="floatingInput">Age</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                        name={"password"} value={form.password} onChange={(e) => handleChange(e)}/>
-                    <label for="floatingPassword">Password</label>
+                    <input type="text" class="form-control" id="floatingPassword" placeholder="enter monthly salary"
+                        name={"salary"} value={form.salary} onChange={(e) => handleChange(e)}/>
+                    <label for="floatingPassword">Salary</label>
                 </div>
                { edit ? <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Update</button> :
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>

@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { toast } from 'react-toastify';
 import ConfirmDialog from './ConfirmDialog';
+import { createEmployees, getEmployees } from './api';
 
 
 const Banner = () => {
@@ -21,10 +22,9 @@ const Banner = () => {
   };
 
   const defaultForm = {
-    id: new Date().getMilliseconds(),
     name: '',
-    email: '',
-    password: ''
+    age: '',
+    salary: ''
   }
 
   const [show, setShow] = useState(false)
@@ -47,17 +47,10 @@ const Banner = () => {
     setShow(false)
   }
 
-  // (READ) - Getting records from locastorage 
-  const localData = JSON.parse(localStorage.getItem("userData"))
 
-  // To display localstorgae Data in the table
 
   useEffect(() => {
-    if (localData) {
-      setRecords(localData)
-    } else {
-      setRecords([])
-    }
+    getEmployees(setRecords)
     // eslint-disable-next-line 
   }, [])
 
@@ -120,9 +113,7 @@ const Banner = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    const enteries = [...records, form]
-    setRecords(enteries)
-    localStorage.setItem('userData', JSON.stringify(enteries))
+    createEmployees(form)
     setForm(defaultForm)
     handleClose()
     toast.success("Data Submit Succesfully");
@@ -133,7 +124,7 @@ const Banner = () => {
       <div class="container wrapper  px-4">
         <div class="row align-items-center py-5">
           <div>
-            <button type="button" class="btn btn-dark me-2"onClick={handleOpen} >{show ? "Close" : "Create"}</button>
+            <button type="button" class="btn btn-dark me-2"onClick={handleOpen} >{show ? "Close" : "Create Employee"}</button>
           </div>
           <Modal
             open={open}

@@ -14,8 +14,8 @@ export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Password</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Salary</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -23,9 +23,9 @@ export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
                         {sordtedRecords?.map((item, index) => (
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
-                                <td>{item?.name}</td>
-                                <td>{item?.email}</td>
-                                <td>{item?.password}</td>
+                                <td>{item?.employee_name}</td>
+                                <td>{item?.employee_age}</td>
+                                <td>{item?.employee_salary}</td>
                                 <td>
                                 <span className='btn btn-danger pointer-cursor ' onClick={() => ConfirmDelete(item.id)}>{"Delete"}</span>
                                 <span className='btn btn-info pointer-cursor mx-2 ' onClick={() => EditRecords(item.id)}>{"Edit"}</span>
