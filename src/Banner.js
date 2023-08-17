@@ -5,8 +5,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { toast } from 'react-toastify';
 import ConfirmDialog from './ConfirmDialog';
-import { createEmployees, getEmployees } from './api';
-
+import { createEmployeesApi, getEmployeesApi, updateEmployeeApi,deleteEmployeeApi } from './api';
 
 const Banner = () => {
   
@@ -47,23 +46,25 @@ const Banner = () => {
     setShow(false)
   }
 
-
+  const getEmployeesRecord = async () =>{
+    const apiResponse = await getEmployeesApi()
+    if(apiResponse){
+      setRecords(apiResponse)
+    }
+  }
 
   useEffect(() => {
-    getEmployees(setRecords)
-    // eslint-disable-next-line 
+    getEmployeesRecord()
   }, [])
 
 
-  // (DELETE) - Delete the selected entery
+  // (DELETE) 
   const ConfirmDelete =(id)=>{
     handleClickOpen()
     setRecordId(id)
   }
   const deleteRecords = () => {
-    const enteries = records.filter((item) => item.id !== recordId)
-    setRecords(enteries)
-    localStorage.setItem('userData', JSON.stringify(enteries))
+    deleteEmployeeApi(recordId)   
     toast.success("Data Deleted Succesfully");
     handleClickClose()
   }
@@ -77,28 +78,26 @@ const Banner = () => {
   const handleClickClose = () => {
     setAlert(false);
   };
+
   // (UPDATE) - (PART-1) Funtion that fill form with selected entry
 
   const EditRecords = (id) => {
+    setRecordId(id)
     handleOpen()
     setEdit(true)
-    const selectedEnterie = records.filter((item) => item.id === id)
-    setForm(selectedEnterie[0])
+    const selectedEmployee = records.filter((item) => item.id === id)
+    setForm({
+      name: selectedEmployee[0].employee_name,
+      age:selectedEmployee[0].employee_age,
+      salary: selectedEmployee[0].employee_salary
+    })
   }
 
   // (UPDATE) - (PART-2) Funtion that update the form
 
   const updateForm = (e) => {
     e.preventDefault();
-    const updatedEnteries = records.map((item) => {
-      if (item.id === form.id) {
-        return form
-      } else {
-        return item
-      }
-    })
-    setRecords(updatedEnteries)
-    localStorage.setItem('userData', JSON.stringify(updatedEnteries))
+    updateEmployeeApi(form,recordId)
     setForm(defaultForm)
     setEdit(false)
     handleClose()
@@ -109,11 +108,10 @@ const Banner = () => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  //(CREATE) - Funtion that add new entry
-
+  //(CREATE) 
   const submitForm = (e) => {
     e.preventDefault();
-    createEmployees(form)
+    createEmployeesApi(form)
     setForm(defaultForm)
     handleClose()
     toast.success("Data Submit Succesfully");

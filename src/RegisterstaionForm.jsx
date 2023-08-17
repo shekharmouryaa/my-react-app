@@ -7,17 +7,17 @@ export const RegisterstaionForm = ({ edit, updateForm,submitForm, form, handleCh
             <h4>{edit ? 'Edit Details' : 'Add Details'}</h4>
             <form onSubmit={(e) => edit ? updateForm(e) : submitForm(e)} class="p-4 p-md-5 border rounded-3 bg-body-tertiary" autoComplete='off'>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Name" required
                         name={"name"} value={form.name} onChange={(e) => handleChange(e)}/>
                     <label for="floatingInput">Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="floatingInput" placeholder="enter age"
+                    <input type="number" class="form-control" id="floatingInput" placeholder="enter age" required
                         name={"age"} value={form.age} onChange={(e) => handleChange(e)}/>
                     <label for="floatingInput">Age</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="enter monthly salary"
+                    <input type="number" class="form-control" id="floatingPassword" placeholder="enter monthly salary" required
                         name={"salary"} value={form.salary} onChange={(e) => handleChange(e)}/>
                     <label for="floatingPassword">Salary</label>
                 </div>
