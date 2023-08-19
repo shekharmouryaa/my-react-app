@@ -24,7 +24,8 @@ const Banner = () => {
     id: new Date().getMilliseconds(),
     name: '',
     email: '',
-    password: ''
+    age: '',
+    created_at: new Date()
   }
 
   const [show, setShow] = useState(false)

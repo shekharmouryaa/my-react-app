@@ -17,9 +17,9 @@ export const RegisterstaionForm = ({ edit, updateForm,submitForm, form, handleCh
                     <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                        name={"password"} value={form.password} onChange={(e) => handleChange(e)}/>
-                    <label for="floatingPassword">Password</label>
+                    <input type="number" class="form-control" id="age" placeholder="Age"
+                        name={"age"} value={form.age} onChange={(e) => handleChange(e)}/>
+                    <label for="age">Age</label>
                 </div>
                { edit ? <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Update</button> :
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
