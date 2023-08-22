@@ -3,6 +3,7 @@ import { Header } from './Header';
 import { Footer } from './Footer'
 import './App.css'
 import { ToastContainer } from 'react-toastify';
+import { JSconcept } from './JSconcept';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
       <Header />
       <Banner featuresItem={featuresItem}/>
       <Footer />
+      <JSconcept/>
     </div>
   );
 }
