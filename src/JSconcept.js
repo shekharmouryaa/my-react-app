@@ -148,6 +148,30 @@ export const JSconcept = () => {
 // greet();
 // console.log(a); // 3
 
+
+// ARRAY METHODS
+
+// const food = ['pizza 0', 'cake 1 ', 'salad 2', 'cookie 3', 'biscuit 4', 'bread 5'];
+
+// SLICE METHOD
+// const newFood = food.slice(1)
+// const newFood = food.slice(2,4)
+
+// slice( 2 ("starting elements need to remove"), 4 ("remove elements from this index"))
+
+// SPLICE METHOD
+
+// food.splice(2,3)
+// food.splice(2,3,"Cheesse 1", "Cheesse 2", "Cheesse 3")  modified items
+// const newFood = food.splice(2,3,"Cheesse 1", "Cheesse 2", "Cheesse 3") // Remaining items
+
+
+// splice(start from, delete count)
+// DIFFERENCE -  splice modify existing Array but slice doesn't
+
+// console.log("food",food);
+// console.log("newFood",newFood);
+
   return (
     <div>{""}</div>
   )
