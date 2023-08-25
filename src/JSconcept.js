@@ -2,19 +2,18 @@ import React from 'react'
 
 export const JSconcept = () => {
 
+// Variables
 
-   // Variables
+// let a = 10;
+// const b= 15;
+// let c;
 
-let a = 10;
-const b= 15;
-let c;
-
-a = 12; //  Assignment to new value 
+// a = 12; //  Assignment to new value 
 // b = 20; Error : Assignment to constant variable. 
 
-console.log(a) //12
-console.log(b) // 15
-console.log(c) // Undefined
+// console.log(a) //12
+// console.log(b) // 15
+// console.log(c) // Undefined
 
    // Data Types
 
