@@ -6,36 +6,53 @@ function FormExample() {
     email: '',
     dob: '',
     isMarried: false,
-    gender: 'male',
+    gender: '',
     comments: '',
     qualification:""
   });
 
-  const handleInputChange = (e) => {
+  const [isSubmitted , setIsSubmitted] = useState(false)
+  // const [hobbiesItems , sethobbiesItems] = useState([{hobby:""}])
 
-      
-      
+  
+
+  const handleInputChange = (e) => {
       const { name, value, type, checked } = e.target;  // Destructring
-      
       const newValue = type === 'checkbox' ? checked : value;
-      
       setFormData((prevData) => ({...prevData,[name]: newValue}));
-      
-      // Another Way
-      // setFormData({...formData,[name]: newValue});
-      // setFormData({...formData, [e.target.name] : e.target.value})
       
   };
 
   const handleSubmit = (event) => {
+    setIsSubmitted(true)
     event.preventDefault();
-    console.log(formData);
+    const { name, email, dob, isMarried } = formData;;
+    if(name && email && dob && isMarried){
+      console.log(formData);
+    }else{
+      console.log("Please fill mandantory fields");
+    }
   };
+
+  
+  // { hobbiesItems.map(item =>
+  //   <input
+  //   className="form-control"
+  //   name="comments"
+  //   value={formData.hobbies}
+  //   onChange={handleInputChange}
+  // />
+  // )}
+  // <button onClick={()=>AddField()}> Add +</button>
+  // const AddField =() =>{
+  //   let hobbies = hobbiesItems.concat({hobby:""})
+  //   sethobbiesItems(hobbies)
+  // }
 
   return (
     <div style={{width: "300px", marginLeft:"25px"}}>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="m-3 border p-1">
           <label className="form-label">Name:</label>
           <input
             type="text"
@@ -44,8 +61,9 @@ function FormExample() {
             value={formData.name}
             onChange={handleInputChange}
           />
+        {isSubmitted && !formData.name  ?  <p className='mt-2 text-danger'>{"Name is required"}</p> : null}
         </div>
-        <div className="mb-3">
+        <div className="m-3 border p-1">
           <label className="form-label">Email:</label>
           <input
             type="email"
@@ -54,8 +72,9 @@ function FormExample() {
             value={formData.email}
             onChange={handleInputChange}
           />
+       {isSubmitted && !formData.email ? <p className='mt-2 text-danger'>{"Email is required"}</p> : null}
         </div>
-        <div className="mb-3">
+        <div className="m-3 border p-1">
           <label className="form-label">Date of Birth:</label>
           <input
             type="date"
@@ -64,18 +83,23 @@ function FormExample() {
             value={formData.dob}
             onChange={handleInputChange}
           />
+            {isSubmitted && !formData.dob ? <p className='mt-2 text-danger'>{"Date of Birth is required"}</p> : null}
         </div>
-        <div className="mb-3 form-check">
+        
+        <div className="m-3 border p-1 ">
+          <div className='form-check'>
           <input
             type="checkbox"
             className="form-check-input"
             name="isMarried"
             checked={formData.isMarried}
             onChange={handleInputChange}
-          />
+            />
           <label className="form-check-label">I am Married</label>
+          {isSubmitted && !formData.isMarried ? <p className='mt-2 text-danger'>{"Maritial Status is required"}</p> : null}
+            </div>
         </div>
-        <div className="mb-3">
+        <div className="m-3 border p-1">
           <label className="form-label">Gender:</label>
           <div className="form-check">
             <input
@@ -98,9 +122,10 @@ function FormExample() {
               onChange={handleInputChange}
             />
             <label className="form-check-label">Female</label>
+          {isSubmitted && !formData.gender ? <p className='mt-2 text-danger'>{"Gender is required"}</p> : null}
           </div>
         </div>
-        <div className="mb-3">
+        <div className="m-3 border p-1">
           <label className="form-label">Comments:</label>
           <textarea
             className="form-control"
@@ -109,7 +134,7 @@ function FormExample() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="m-3 border p-3">
           <label className="form-label">Qualification:</label>
           <select className='form-control'
             name ="qualification"
@@ -122,6 +147,17 @@ function FormExample() {
             <option value="Diploma">Diploma</option>
           </select>
         </div>
+
+        <div className="m-3 border p-1">
+          <label className="form-label">Hobbies:</label>
+          <input
+            className="form-control"
+            name="comments"
+            value={formData.hobbies}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
