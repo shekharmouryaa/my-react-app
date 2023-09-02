@@ -210,6 +210,41 @@ export const JSconcept = () => {
 //  console.log("PTagHtml",PTagHtml);
 //  console.log("PTagText",PTagText);
 
+
+// LOOP CONCEPTS
+
+// let numberForTable = 3
+// let upto = 10
+// let i = 1
+
+// for(let i = 1; i <= upto ;i++){
+//     let tableRow = `${numberForTable} * ${i} = ${numberForTable*i}`
+//     console.log(tableRow)
+// }
+
+// while(i <= upto ){
+//     let tableRow = `${numberForTable} * ${i} = ${numberForTable*i}`
+//     console.log(tableRow)
+//     i++;
+// }
+
+// do{
+//     let tableRow = `${numberForTable} * ${i} = ${numberForTable*i}`
+//     console.log(tableRow)
+//     i++;
+// }while(i <= upto )
+
+// let weekName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+// for(let i = 0; i <= weekName.length ;i++){
+//     let tableRow = `${i+1} day of week is ${weekName[i]}`
+//     console.log(tableRow)
+// }
+
+// weekName.forEach((val,index) =>{
+//     console.log(`${index+1} day of week is ${val}`)
+// })
+
   return (
     <div>
       {/* <p>
