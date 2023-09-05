@@ -245,6 +245,43 @@ export const JSconcept = () => {
 //     console.log(`${index+1} day of week is ${val}`)
 // })
 
+
+// **************** OBJECT and Object Methods ***********************
+
+// const userDetails =  { 
+//   "name": 'Dave',
+//   "job": 'Front End Development',
+//   "age": 26,
+//   "monthly salary": {
+//       "basic" : 12000,
+//       "allowance" :1250
+//   },
+//   "address" : {
+//       "city" : "indore",
+//       "state" : "MP",
+//       }
+// }
+
+// userDetails.email = "abc@test.com";
+// userDetails.address.pincode = 125212
+// delete userDetails["monthly salary"].allowance
+// console.log(userDetails);
+// console.log(userDetails.hasOwnProperty("job"));
+
+// const userAddress = {
+//   "city" : "indore",
+//   "state" : "MP",
+// }
+
+//--------------> Update the existing object
+// userDetails.address = userAddress
+// console.log(userDetails)
+
+
+//---------> Create a new copy of object
+// const updatedUser = {...userDetails, address : userAddress }
+// console.log(updatedUser)
+
   return (
     <div>
       {/* <p>
