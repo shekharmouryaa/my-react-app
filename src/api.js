@@ -1,14 +1,16 @@
 
+const BASE_URL = "https://mern-admin-backend-jxw3.onrender.com"
+
 export const getEmployeesApi = async () =>{
-    let employeesData = await fetch('https://dummy.restapiexample.com/api/v1/employees')
+    let employeesData = await fetch(`${BASE_URL}/general/users`)
     .then((response) => response.json())
-    .then((response) => response.data)
+    .then((response) => response)
     .catch((err)=> console.log(err));
     return employeesData
 }
 
 export const createEmployeesApi = (employee) =>{
-    fetch('https://dummy.restapiexample.com/api/v1/create', {
+    fetch(`${BASE_URL}/general/user/add`, {
   method: 'POST',
   body: JSON.stringify(employee),
   headers: {
@@ -20,7 +22,7 @@ export const createEmployeesApi = (employee) =>{
 }
 
 export const updateEmployeeApi = (form,recordId) =>{
-  fetch(`https://dummy.restapiexample.com/api/v1/update/${recordId}`, {
+  fetch(`${BASE_URL}/general/user/update/${recordId}`, {
   method: 'PUT',
   body: JSON.stringify(form),
   headers: {
@@ -32,7 +34,7 @@ export const updateEmployeeApi = (form,recordId) =>{
 }
 
 export const deleteEmployeeApi = (recordId) =>{
-  fetch(`https://dummy.restapiexample.com/api/v1/delete/${recordId}`, {
+  fetch(`${BASE_URL}/general/user/delete/${recordId}`, {
   method: 'DELETE',
   headers: {
   'Content-type': 'application/json; charset=UTF-8',

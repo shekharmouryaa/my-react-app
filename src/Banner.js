@@ -22,8 +22,11 @@ const Banner = () => {
 
   const defaultForm = {
     name: '',
-    age: '',
-    salary: ''
+    email: '',
+    phoneNumber:'',
+    city: '',
+    occupation:'',
+    password:''
   }
 
   const [show, setShow] = useState(false)
@@ -64,8 +67,9 @@ const Banner = () => {
     setRecordId(id)
   }
   const deleteRecords = () => {
-    deleteEmployeeApi(recordId)   
+    deleteEmployeeApi(recordId)
     toast.success("Data Deleted Succesfully");
+    getEmployeesRecord()
     handleClickClose()
   }
 
@@ -85,11 +89,14 @@ const Banner = () => {
     setRecordId(id)
     handleOpen()
     setEdit(true)
-    const selectedEmployee = records.filter((item) => item.id === id)
+    const selectedEmployee = records.filter((item) => item._id === id)
     setForm({
-      name: selectedEmployee[0].employee_name,
-      age:selectedEmployee[0].employee_age,
-      salary: selectedEmployee[0].employee_salary
+      name: selectedEmployee[0].name,
+      email:selectedEmployee[0].email,
+      phoneNumber: selectedEmployee[0].phoneNumber,
+      city: selectedEmployee[0].city,
+      occupation: selectedEmployee[0].occupation,
+      password: selectedEmployee[0].password
     })
   }
 
@@ -114,7 +121,7 @@ const Banner = () => {
     createEmployeesApi(form)
     setForm(defaultForm)
     handleClose()
-    toast.success("Data Submit Succesfully");
+    toast.success("Data added Succesfully");
   }
 
   return (
