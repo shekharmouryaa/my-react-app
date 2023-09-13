@@ -6,8 +6,9 @@ import Modal from '@mui/material/Modal';
 import { toast } from 'react-toastify';
 import ConfirmDialog from './ConfirmDialog';
 import { createEmployeesApi, getEmployeesApi, updateEmployeeApi,deleteEmployeeApi } from './api';
+import Loader from './Loader';
 
-const Banner = () => {
+const MainContainer = () => {
   
   const style = {
     position: 'absolute',
@@ -36,7 +37,15 @@ const Banner = () => {
   const [open, setOpen] = useState(false)
   const [alert, setAlert] = useState(false)
   const [recordId, setRecordId] = useState("")
-
+  const [isLoading, setIsloading] = React.useState(false);
+  
+  const endLoading = () => {
+    setIsloading(false);
+  };
+  const startLoading = () => {
+    setIsloading(true);
+  };
+  
   const handleOpen = () => {
     setOpen(true)
     setEdit(false)
@@ -49,15 +58,18 @@ const Banner = () => {
     setShow(false)
   }
 
-  const getEmployeesRecord = async () =>{
+  const getEmployeesRecord = async () => {
+    startLoading()
     const apiResponse = await getEmployeesApi()
     if(apiResponse){
       setRecords(apiResponse)
+      endLoading()
     }
   }
 
   useEffect(() => {
     getEmployeesRecord()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
@@ -66,6 +78,7 @@ const Banner = () => {
     handleClickOpen()
     setRecordId(id)
   }
+
   const deleteRecords = () => {
     deleteEmployeeApi(recordId)
     toast.success("Data Deleted Succesfully");
@@ -90,14 +103,7 @@ const Banner = () => {
     handleOpen()
     setEdit(true)
     const selectedEmployee = records.filter((item) => item._id === id)
-    setForm({
-      name: selectedEmployee[0].name,
-      email:selectedEmployee[0].email,
-      phoneNumber: selectedEmployee[0].phoneNumber,
-      city: selectedEmployee[0].city,
-      occupation: selectedEmployee[0].occupation,
-      password: selectedEmployee[0].password
-    })
+    setForm(selectedEmployee[0])
   }
 
   // (UPDATE) - (PART-2) Funtion that update the form
@@ -117,15 +123,18 @@ const Banner = () => {
 
   //(CREATE) 
   const submitForm = (e) => {
+    startLoading()
     e.preventDefault();
     createEmployeesApi(form)
     setForm(defaultForm)
     handleClose()
     toast.success("Data added Succesfully");
+    endLoading()
   }
 
   return (
     <div>
+       <Loader isLoading={isLoading} endLoading={endLoading} />
       <div class="container wrapper  px-4">
         <div class="row align-items-center py-5">
           <div>
@@ -152,4 +161,4 @@ const Banner = () => {
   )
 }
 
-export default Banner
+export default MainContainer;

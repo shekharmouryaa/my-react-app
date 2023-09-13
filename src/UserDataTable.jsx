@@ -2,9 +2,9 @@ import React from 'react'
 
 export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
 
-    const sordtedRecords = records?.sort((a,b) => {
-        return  a?.name?.localeCompare(b?.name)
-    })
+    // const sordtedRecords = records?.sort((a,b) => {
+    //     return  a?.name?.localeCompare(b?.name)
+    // })
 
     return (
         <div>
@@ -15,14 +15,15 @@ export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Phone Number</th>
+                            <th scope="col">Mobile</th>
                             <th scope="col">City</th>
                             <th scope="col">Occupation</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Delete</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {sordtedRecords?.map((item, index) => (
+                        {records?.map((item, index) => (
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
                                 <td>{item?.name}</td>
@@ -32,6 +33,8 @@ export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
                                 <td>{item?.occupation}</td>
                                 <td>
                                 <span className='btn btn-danger pointer-cursor ' onClick={() => ConfirmDelete(item._id)}>{"Delete"}</span>
+                                </td>
+                                <td>
                                 <span className='btn btn-info pointer-cursor mx-2 ' onClick={() => EditRecords(item._id)}>{"Edit"}</span>
                                 </td>
                             </tr>

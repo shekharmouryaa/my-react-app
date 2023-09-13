@@ -44,3 +44,7 @@
 .wrapper{
   min-height: calc(100vh - 210px);
 }
+
+tbody tr td{
+  text-align: left;
+}
