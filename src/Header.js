@@ -7,7 +7,7 @@ export const Header = () => {
       <header className="p-3 text-bg-dark">
        <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center">
-        <h4 className="text-center">{"Employees Data"}</h4>
+        <h4 className="text-center">Banking App</h4>
       </div>
     </div>
   </header>

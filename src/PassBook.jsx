@@ -1,11 +1,6 @@
 import React from 'react'
 
-export const UserDataTable = ({ records, ConfirmDelete,EditRecords }) => {
-
-    // const sordtedRecords = records?.sort((a,b) => {
-    //     return  a?.name?.localeCompare(b?.name)
-    // })
-
+export const PassBook = ({ records, ConfirmDelete,EditRecords }) => {
     return (
         <div>
             <div className='table-wrapper'>

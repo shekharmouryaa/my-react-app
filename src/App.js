@@ -1,6 +1,5 @@
 import MainContainer from './MainContainer';
 import { Header } from './Header';
-import { Footer } from './Footer'
 import './App.css'
 import { ToastContainer } from 'react-toastify';
 
@@ -11,7 +10,6 @@ function App() {
       <ToastContainer />
       <Header />
       <MainContainer/>
-      <Footer />
     </div>
   );
 }
