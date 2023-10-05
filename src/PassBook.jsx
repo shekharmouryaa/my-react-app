@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-export const PassBook = ({ entries }) => {
+export const PassBook = () => {
+
+    const  data = useSelector(state => state.entries)
+    console.log(data.passbookEnteries);
+
     return (
         <div>
             <div className='table-wrapper'>
@@ -16,7 +21,7 @@ export const PassBook = ({ entries }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {entries?.map((item, index) => (
+                        {data.passbookEnteries?.map((item, index) => (
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
                                 <td>{item?.chequeNumber}</td>
@@ -28,7 +33,7 @@ export const PassBook = ({ entries }) => {
                         }
                     </tbody>
                 </table>
-                {entries.length === 0 ? <h4 className='m-3 text-center'>{"No Records found"}</h4> : null}
+                {data.passbookEnteries?.length === 0 ? <h4 className='m-3 text-center'>{"No Records found"}</h4> : null}
 
             </div>
         </div>
