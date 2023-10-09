@@ -1,30 +1,52 @@
-import React from 'react'
+import React, {  useState } from 'react';
+import { addUser } from './redux/action';
+import { useDispatch } from 'react-redux';
 
-export const RegisterstaionForm = ({ edit, updateForm,submitForm, form, handleChange }) => {
+export const RegisterstaionForm = () => {
+      
+  const defaultForm = {
+    id: new Date().getMilliseconds(),
+    name: '',
+    email: '',
+    phone: ''
+  }
+  const [form, setForm] = useState(defaultForm)
+  const dispatch = useDispatch()
+
+      const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+      }
+    
+    //(CREATE) - Funtion that add new entry
+
+      const submitForm = (e) => {
+        e.preventDefault();
+        dispatch(addUser(form))
+        setForm(defaultForm)
+      }
     return (
 
-        <div class="col-md-10 mx-auto col-lg-5">
-            <form onSubmit={(e) => edit ? updateForm(e) : submitForm(e)} class="p-4 p-md-5 border rounded-3 bg-body-tertiary" autoComplete='off'>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+        <div className="col-md-10 mx-auto col-lg-5">
+            <form onSubmit={(e) => submitForm(e)} className="p-4 p-md-5 border rounded-3 bg-body-tertiary" autoComplete='off'>
+                <div className="form-floating mb-3">
+                    <input type="text" className="form-control" id="floatingInput" placeholder="Name"
                         name={"name"} value={form.name} onChange={(e) => handleChange(e)} />
-                    <label for="floatingInput">Name</label>
+                    <label htmlFor="floatingInput">Name</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                <div className="form-floating mb-3">
+                    <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
                         name={"email"} value={form.email} onChange={(e) => handleChange(e)} />
-                    <label for="floatingInput">Email address</label>
+                    <label htmlFor="floatingInput">Email address</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                        name={"password"} value={form.password} onChange={(e) => handleChange(e)} />
-                    <label for="floatingPassword">Password</label>
+                <div className="form-floating mb-3">
+                    <input type="number" className="form-control" id="floatingPassword" placeholder="Password"
+                        name={"phone"} value={form.phone} onChange={(e) => handleChange(e)} />
+                    <label htmlFor="floatingphone">Phone</label>
                 </div>
-               { edit ? <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Update</button> :
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-                }
-                <hr class="my-4" />
-                <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+              
+                <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+                <hr className="my-4" />
+                <small className="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
             </form>
         </div>
     )
