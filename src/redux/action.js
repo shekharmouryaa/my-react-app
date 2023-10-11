@@ -1,15 +1,22 @@
 
-export const addUser = (user) => {
+export const addUser = (form) => {
     return {
         type: "ADD_USER",
-        payload: user
+        payload: form
     }
     
 }
-export const deleteUser = (users) => {
+export const deleteUser = (usersData) => {
     return {
         type: "DELETE_USER",
-        payload: users
+        payload: usersData
     }
-    
+}
+
+
+export const updateUser = (usersData) => {
+    return {
+        type: "EDIT_USER",
+        payload: usersData
+    }
 }

@@ -1,21 +1,9 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteUser } from './redux/action'
 
-export const UserDataTable = () => {
+export const UserDataTable = ({editRecords,deleteRecords,userdata}) => {
     
-    const userdata = useSelector((state) => state.userReducer)
-    console.log(userdata.users)
- 
 
-    const dispatch = useDispatch()
-    const deleteRecords = (id) => {
-        let newdata = userdata.users.filter((item) => {
-            return item.id !== id
-        })
 
-        dispatch(deleteUser(newdata))
-      }
 
     return (
         <div>
@@ -39,7 +27,7 @@ export const UserDataTable = () => {
                                 <td>{item.phone}</td>
                                 <td>
                                 <span className='btn btn-danger pointer-cursor ' onClick={() => deleteRecords(item.id)}>{"Delete"}</span>
-                                <span className='btn btn-info pointer-cursor mx-2 '>{"Edit"}</span>
+                                <span className='btn btn-info pointer-cursor mx-2' onClick={() => editRecords(item.id)} >{"Edit"}</span>
                                 </td>
                             </tr>
                         ))

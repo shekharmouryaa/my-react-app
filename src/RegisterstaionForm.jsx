@@ -1,33 +1,12 @@
-import React, {  useState } from 'react';
-import { addUser } from './redux/action';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
-export const RegisterstaionForm = () => {
-      
-  const defaultForm = {
-    id: new Date().getMilliseconds(),
-    name: '',
-    email: '',
-    phone: ''
-  }
-  const [form, setForm] = useState(defaultForm)
-  const dispatch = useDispatch()
 
-      const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
-      }
-    
-    //(CREATE) - Funtion that add new entry
+export const RegisterstaionForm = ({submitForm,form,handleChange,isEdit,updateForm}) => {
 
-      const submitForm = (e) => {
-        e.preventDefault();
-        dispatch(addUser(form))
-        setForm(defaultForm)
-      }
     return (
 
         <div className="col-md-10 mx-auto col-lg-5">
-            <form onSubmit={(e) => submitForm(e)} className="p-4 p-md-5 border rounded-3 bg-body-tertiary" autoComplete='off'>
+            <form onSubmit={(e) =>isEdit ? updateForm(e) : submitForm(e)} className="p-4 p-md-5 border rounded-3 bg-body-tertiary" autoComplete='off'>
                 <div className="form-floating mb-3">
                     <input type="text" className="form-control" id="floatingInput" placeholder="Name"
                         name={"name"} value={form.name} onChange={(e) => handleChange(e)} />
@@ -44,7 +23,7 @@ export const RegisterstaionForm = () => {
                     <label htmlFor="floatingphone">Phone</label>
                 </div>
               
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+                <button className="w-100 btn btn-lg btn-primary" type="submit">{isEdit?"Update":"Submit"}</button>
                 <hr className="my-4" />
                 <small className="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
             </form>
