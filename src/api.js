@@ -9,8 +9,8 @@ export const getEmployeesApi = async () => {
   return employeesData
 }
 
-export const createEmployeesApi = (employee) => {
-  fetch(`${BASE_URL}/general/user/add`, {
+export const createEmployeesApi = async (employee) => {
+  let apiResponse  = await fetch(`${BASE_URL}/general/user/add`, {
     method: 'POST',
     body: JSON.stringify(employee),
     headers: {
@@ -18,8 +18,10 @@ export const createEmployeesApi = (employee) => {
     },
   })
     .then((response) => response.json())
-    .then((json) => console.log(json))
+    .then((json) => json)
     .catch((err) => console.log(err));
+
+    return apiResponse
 }
 
 export const updateEmployeeApi = (form, recordId) => {

@@ -5,8 +5,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { toast } from 'react-toastify';
 import ConfirmDialog from './ConfirmDialog';
-import { createEmployeesApi, getEmployeesApi, updateEmployeeApi,deleteEmployeeApi } from './api';
+import {  updateEmployeeApi,deleteEmployeeApi } from './api';
 import Loader from './Loader';
+import { addEmployee, getEmployee } from './redux/action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MainContainer = () => {
   
@@ -30,14 +32,18 @@ const MainContainer = () => {
     password:''
   }
 
+  const {records} = useSelector(state => state.employeeReducers)
+
   const [show, setShow] = useState(false)
   const [edit, setEdit] = useState(false)
   const [form, setForm] = useState(defaultForm)
-  const [records, setRecords] = useState([])
+  // const [records, setRecords] = useState([])
   const [open, setOpen] = useState(false)
   const [alert, setAlert] = useState(false)
   const [recordId, setRecordId] = useState("")
   const [isLoading, setIsloading] = React.useState(false);
+
+  const dispatch = useDispatch();
   
   const endLoading = () => {
     setIsloading(false);
@@ -58,17 +64,17 @@ const MainContainer = () => {
     setShow(false)
   }
 
-  const getEmployeesRecord = async () => {
-    startLoading()
-    const apiResponse = await getEmployeesApi()
-    if(apiResponse){
-      setRecords(apiResponse)
-      endLoading()
-    }
-  }
+  // const getEmployeesRecord = async () => {
+  //   startLoading()
+  //   const apiResponse = await getEmployeesApi()
+  //   if(apiResponse){
+  //     setRecords(apiResponse)
+  //     endLoading()
+  //   }
+  // }
 
   useEffect(() => {
-    getEmployeesRecord()
+    dispatch(getEmployee())
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -82,7 +88,7 @@ const MainContainer = () => {
   const deleteRecords = () => {
     deleteEmployeeApi(recordId)
     toast.success("Data Deleted Succesfully");
-    getEmployeesRecord()
+    // getEmployeesRecord()
     handleClickClose()
   }
 
@@ -125,13 +131,14 @@ const MainContainer = () => {
   const submitForm = (e) => {
     startLoading()
     e.preventDefault();
-    createEmployeesApi(form)
+    dispatch(addEmployee(form))
     setForm(defaultForm)
     handleClose()
     toast.success("Data added Succesfully");
     endLoading()
   }
 
+  
   return (
     <div>
        <Loader isLoading={isLoading} endLoading={endLoading} />
