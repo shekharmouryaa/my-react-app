@@ -2,9 +2,6 @@ import React from 'react'
 
 export const UserDataTable = ({editRecords,deleteRecords,userdata}) => {
     
-
-
-
     return (
         <div>
             <div className='table-wrapper'>

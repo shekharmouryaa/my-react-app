@@ -1,7 +1,8 @@
 
 const initalState = {
     users : [],
-    isAdmin : false
+    isAdmin : false,
+    active: false
 }
 
 export const userReducer = (state = initalState, action) => {

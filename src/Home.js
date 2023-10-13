@@ -15,6 +15,7 @@ const Home = () => {
   }
 
   const userdata = useSelector((state) => state.userReducer)
+  
   const [form, setForm] = useState(defaultForm)
   const [isEdit, setIsEdit] = useState(false)
   const dispatch = useDispatch()
@@ -44,10 +45,11 @@ const Home = () => {
     // const seleteduser = userdata.users.filter((item) => {
     //     return item.id === id
     // })
+    // setForm(seleteduser[0])
+
     const seleteduserFind = userdata.users.find((item) => {
       return item.id === id
     })
-    // setForm(seleteduser[0])
     setForm(seleteduserFind)
   }
 
