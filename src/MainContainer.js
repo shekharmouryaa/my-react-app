@@ -5,9 +5,9 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { toast } from 'react-toastify';
 import ConfirmDialog from './ConfirmDialog';
-import {  updateEmployeeApi,deleteEmployeeApi } from './api';
+// import {  updateEmployeeApi } from './api';
 import Loader from './Loader';
-import { addEmployee, getEmployee } from './redux/action';
+import { addEmployee, getEmployee ,deleteEmployeeAction, updateEmployeAction } from './redux/action';
 import { useDispatch, useSelector } from 'react-redux';
 
 const MainContainer = () => {
@@ -85,8 +85,12 @@ const MainContainer = () => {
     setRecordId(id)
   }
 
+
+
   const deleteRecords = () => {
-    deleteEmployeeApi(recordId)
+
+    dispatch(deleteEmployeeAction(recordId))
+    // deleteEmployeeApi(recordId)
     toast.success("Data Deleted Succesfully");
     // getEmployeesRecord()
     handleClickClose()
@@ -116,7 +120,9 @@ const MainContainer = () => {
 
   const updateForm = (e) => {
     e.preventDefault();
-    updateEmployeeApi(form,recordId)
+
+    dispatch(updateEmployeAction(form,recordId))
+    // updateEmployeeApi(form,recordId)
     setForm(defaultForm)
     setEdit(false)
     handleClose()
